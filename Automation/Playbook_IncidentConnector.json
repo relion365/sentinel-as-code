@@ -56,7 +56,7 @@
                     "$connections": {
                         "value": {
                             "azuresentinel": {
-                                "connectionId": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/resourceGroups/powertecsentinelrg/providers/Microsoft.Web/connections/azuresentinel-IncidentConnector",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
                                 "connectionName": "[variables('AzureSentinelConnectionName')]",
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuresentinel')]",
                                 "connectionProperties": {
