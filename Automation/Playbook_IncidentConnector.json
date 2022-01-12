@@ -2,20 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "PlaybookName": {
+        "workflows_IncidentConnector_name": {
             "defaultValue": "IncidentConnector",
             "type": "String"
         }
     },
-    "variables": {
-        "AzureSentinelConnectionName": "[concat('azuresentinel-', parameters('PlaybookName'))]"
-    },
+    "variables": {},
     "resources": [
         {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "[parameters('PlaybookName')]",
-            "location": "[resourceGroup().location]",
+            "name": "[parameters('workflows_IncidentConnector_name')]",
+            "location": "westus2",
             "identity": {
                 "type": "SystemAssigned"
             },
@@ -53,9 +51,9 @@
                     "$connections": {
                         "value": {
                             "azuresentinel": {
-                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
-                                "connectionName": "[variables('AzureSentinelConnectionName')]",
-                                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuresentinel')]",
+                                "connectionId": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/resourceGroups/RelionSentinelRG/providers/Microsoft.Web/connections/azuresentinel-IncidentConnector",
+                                "connectionName": "[concat('azuresentinel-', parameters('workflows_IncidentConnector_name'))]",
+                                "id": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/providers/Microsoft.Web/locations/westus2/managedApis/azuresentinel",
                                 "connectionProperties": {
                                     "authentication": {
                                         "type": "ManagedServiceIdentity"
