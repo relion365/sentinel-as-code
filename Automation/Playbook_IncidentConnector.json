@@ -1,12 +1,13 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "metadata": {
-        "title": "OnlyRelion"
-    },
     "parameters": {
         "PlaybookName": {
-            "defaultValue": "IncidentConnector",
+            "defaultValue": "PowertecEmail",
+            "type": "String"
+        },        
+        "connections_azuresentinel_PowertecEmail_externalid": {
+            "defaultValue": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/resourceGroups/PowertecSentinelRG/providers/Microsoft.Web/connections/azuresentinel-PowertecEmail",
             "type": "String"
         }
     },
@@ -19,6 +20,10 @@
             "apiVersion": "2017-07-01",
             "name": "[parameters('PlaybookName')]",
             "location": "[resourceGroup().location]",
+            "tags": {
+                "hidden-SentinelTemplateName": "Send-basic-email",
+                "hidden-SentinelTemplateVersion": "1.0"
+            },
             "identity": {
                 "type": "SystemAssigned"
             },
@@ -56,14 +61,14 @@
                     "$connections": {
                         "value": {
                             "azuresentinel": {
-                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
+                                "connectionId": "[parameters('connections_azuresentinel_PowertecEmail_externalid')]",
                                 "connectionName": "[variables('AzureSentinelConnectionName')]",
-                                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuresentinel')]",
                                 "connectionProperties": {
                                     "authentication": {
                                         "type": "ManagedServiceIdentity"
                                     }
-                                }
+                                },
+                                "id": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/providers/Microsoft.Web/locations/westus2/managedApis/azuresentinel"
                             }
                         }
                     }
