@@ -1,9 +1,12 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "metadata": {
+        "title": "RelionEmail"
+    },
     "parameters": {
         "PlaybookName": {
-            "defaultValue": "RelionEmail",
+            "defaultValue": "IncidentConnector",
             "type": "String"
         }
     },
@@ -16,10 +19,6 @@
             "apiVersion": "2017-07-01",
             "name": "[parameters('PlaybookName')]",
             "location": "[resourceGroup().location]",
-            "tags": {
-                "hidden-SentinelTemplateName": "Send-basic-email",
-                "hidden-SentinelTemplateVersion": "1.0"
-            },
             "identity": {
                 "type": "SystemAssigned"
             },
