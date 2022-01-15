@@ -5,11 +5,7 @@
         "PlaybookName": {
             "defaultValue": "PowertecEmail",
             "type": "String"
-        },        
-        "connections_azuresentinel_PowertecEmail_externalid": {
-            "defaultValue": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/resourceGroups/PowertecSentinelRG/providers/Microsoft.Web/connections/azuresentinel-PowertecEmail",
-            "type": "String"
-        }
+        }   
     },
     "variables": {
         "AzureSentinelConnectionName": "[concat('azuresentinel-', parameters('PlaybookName'))]"
@@ -63,12 +59,13 @@
                             "azuresentinel": {
                                 "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
                                 "connectionName": "[variables('AzureSentinelConnectionName')]",
+                                "id": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/providers/Microsoft.Web/locations/westus2/managedApis/azuresentinel",
                                 "connectionProperties": {
                                     "authentication": {
                                         "type": "ManagedServiceIdentity"
                                     }
-                                },
-                                "id": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/providers/Microsoft.Web/locations/westus2/managedApis/azuresentinel"
+                                }
+                                
                             }
                         }
                     }
