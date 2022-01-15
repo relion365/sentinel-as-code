@@ -2,16 +2,16 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "metadata":{
-        "comments": "This playbook will change Incident Severity based on specific username that is part of the Incident user entity.",
-        "author": "Yaniv Shasha"
+        "comments": "This playbook will send notifications to the designated email address below.",
+        "author": "Brian Lee"
     },
     "parameters": {
         "PlaybookName": {
-            "defaultValue": "Change-Incident-Severity",
+            "defaultValue": "Sentinel-as-code",
             "type": "string"
         },
         "UserName": {
-            "defaultValue": "<username>@<domain>",
+            "defaultValue": "alerts@thinkrelion.com",
             "type": "string"
         }
     },
