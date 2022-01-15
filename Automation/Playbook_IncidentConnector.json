@@ -6,12 +6,11 @@
     },
     "parameters": {
         "PlaybookName": {
-            "defaultValue": "PowertecEmail",
+            "defaultValue": "IncidentConnector",
             "type": "String"
         }
     },
     "variables": {
-        "AzureSentinelConnectionName": "[concat('azuresentinel-', parameters('PlaybookName'))]"
     },
     "resources": [
         {
@@ -56,8 +55,8 @@
                     "$connections": {
                         "value": {
                             "azuresentinel": {
-                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
-                                "connectionName": "[variables('AzureSentinelConnectionName')]",
+                                "connectionId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Web/connections/azuresentinel-SendEmail')]",
+                                "connectionName": "azuresentinel-SendEmail",
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuresentinel')]",
                                 "connectionProperties": {
                                     "authentication": {
