@@ -24,6 +24,9 @@
             "apiVersion": "2016-06-01",
             "name": "[variables('AzureSentinelConnectionName')]",
             "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
             "properties": {
                 "displayName": "[parameters('UserName')]",
                 "customParameterValues": {},
