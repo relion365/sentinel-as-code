@@ -6,7 +6,7 @@
     },
     "parameters": {
         "PlaybookName": {
-            "defaultValue": "Test",
+            "defaultValue": "PowertecEmail",
             "type": "String"
         }
     },
