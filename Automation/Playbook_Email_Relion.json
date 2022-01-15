@@ -10,8 +10,12 @@
             "defaultValue": "Github-Email-Notification",
             "type": "string"
         },
-        "Recipient": {
+        "From": {
             "defaultValue": "alerts@thinkrelion.com",
+            "type": "string"
+        },
+        "To": {
+            "defaultValue": "[concat(resourceGroup().name, '@mailgun.thinkrelion.com')]",
             "type": "string"
         }
     },
@@ -112,9 +116,9 @@
                             "inputs": {
                                 "body": {
                                     "Body": "<p>Incident title:<br>\n@{triggerBody()?['object']?['properties']?['title']}<br>\n<br>\nIncident ID:<br>\n@{triggerBody()?['object']?['properties']?['incidentNumber']}<br>\n<br>\nCreation time:<br>\n@{triggerBody()?['object']?['properties']?['createdTimeUtc']}<br>\n<br>\nSeverity:<br>\n@{triggerBody()?['object']?['properties']?['severity']}<br>\n<br>\nAlert providers:<br>\n@{join(triggerBody()?['object']?['properties']?['additionalData']?['alertProductNames'], '<br />')}<br>\n<br>\nTactics:<br>\n@{join(triggerBody()?['object']?['properties']?['additionalData']?['tactics'], '<br />')}<br>\n<br>\nDescription:<br>\n@{triggerBody()?['object']?['properties']?['description']}<br>\n<br>\nEntities:<br>\n@{body('Create_HTML_table_with_Entities')}<br>\n<br>\nIncident link:<br>\n@{outputs('Compose_Incident_link')}</p>",
-                                    "From": "[concat(resourceGroup().name, '@mailgun.thinkrelion.com')]",
+                                    "From":"[parameters('From')]",
                                     "Subject": "New Azure Sentinel Incident - @{triggerBody()?['object']?['properties']?['title']}",
-                                    "To": "[parameters('Recipient')]"
+                                    "To": "[parameters('To')]"
                                 },
                                 "host": {
                                     "connection": {
