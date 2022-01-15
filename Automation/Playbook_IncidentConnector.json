@@ -61,7 +61,7 @@
                     "$connections": {
                         "value": {
                             "azuresentinel": {
-                                "connectionId": "[parameters('connections_azuresentinel_PowertecEmail_externalid')]",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
                                 "connectionName": "[variables('AzureSentinelConnectionName')]",
                                 "connectionProperties": {
                                     "authentication": {
