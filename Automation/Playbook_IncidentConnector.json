@@ -3,9 +3,9 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "PlaybookName": {
-            "defaultValue": "PowertecEmail",
+            "defaultValue": "RelionEmail",
             "type": "String"
-        }   
+        }
     },
     "variables": {
         "AzureSentinelConnectionName": "[concat('azuresentinel-', parameters('PlaybookName'))]"
@@ -59,13 +59,12 @@
                             "azuresentinel": {
                                 "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
                                 "connectionName": "[variables('AzureSentinelConnectionName')]",
-                                "id": "/subscriptions/1b7c7a80-5fcc-4a71-ac95-69501742611f/providers/Microsoft.Web/locations/westus2/managedApis/azuresentinel",
+                                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuresentinel')]",
                                 "connectionProperties": {
                                     "authentication": {
                                         "type": "ManagedServiceIdentity"
                                     }
                                 }
-                                
                             }
                         }
                     }
