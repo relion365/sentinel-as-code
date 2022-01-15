@@ -6,7 +6,7 @@
     },
     "parameters": {
         "PlaybookName": {
-            "defaultValue": "PowertecEmail",
+            "defaultValue": "IncidentConnector",
             "type": "String"
         }
     },
