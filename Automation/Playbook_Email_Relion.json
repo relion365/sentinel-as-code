@@ -70,7 +70,39 @@
                             }
                         }
                     },
-
+                    "actions": {
+                        "Compose_Incident_link": {
+                            "runAfter": {
+                                "Create_HTML_table_with_Entities": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Compose",
+                            "inputs": "<a href=\"@{triggerBody()?['object']?['properties']?['incidentUrl']}\">@{triggerBody()?['object']?['properties']?['incidentUrl']}</a>"
+                        },
+                        "Create_HTML_table_with_Entities": {
+                            "runAfter": {
+                                "Select_Entities": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Table",
+                            "inputs": {
+                                "format": "HTML",
+                                "from": "@body('Select_Entities')"
+                            }
+                        },
+                        "Select_Entities": {
+                            "runAfter": {},
+                            "type": "Select",
+                            "inputs": {
+                                "from": "@triggerBody()?['object']?['properties']?['relatedEntities']",
+                                "select": {
+                                    "Entity": "@item()?['properties']?['friendlyName']",
+                                    "Entity Type": "@item()?['kind']"
+                                }
+                            }
+                        },
                     "outputs": {}
                 },
                 "parameters": {
