@@ -136,12 +136,12 @@
                     "$connections": {
                         "value": {
                             "azuresentinel": {
-                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', 'sentinel')]",
                                 "connectionName": "sentinel",
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/azuresentinel')]"
                             },
                             "smtp": {
-                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('AzureSentinelConnectionName'))]",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', 'smtp')]",
                                 "connectionName": "smtp",
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/smtp')]"
                             }
