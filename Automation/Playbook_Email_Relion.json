@@ -11,7 +11,7 @@
             "type": "string"
         },
         "From": {
-            "defaultValue": "alerts@thinkrelion.com",
+            "defaultValue": "brian@thinkrelion.com",
             "type": "string"
         },
         "To": {
