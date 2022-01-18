@@ -11,11 +11,11 @@
             "type": "string"
         },
         "From": {
-            "defaultValue": "brian@thinkrelion.com",
+            "defaultValue": "[concat(resourceGroup().name, '@mailgun.thinkrelion.com')]",
             "type": "string"
         },
         "To": {
-            "defaultValue": "[concat(resourceGroup().name, '@mailgun.thinkrelion.com')]",
+            "defaultValue": "brian@thinkrelion.com",
             "type": "string"
         }
     },
